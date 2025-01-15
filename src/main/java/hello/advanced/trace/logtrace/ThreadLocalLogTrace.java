@@ -1,7 +1,7 @@
 package hello.advanced.trace.logtrace;
 
-import hello.advanced.trace.TraceId;
-import hello.advanced.trace.TraceStatus;
+import hello.advanced.trace.model.TraceId;
+import hello.advanced.trace.model.TraceStatus;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -28,7 +28,7 @@ public class ThreadLocalLogTrace implements LogTrace {
         if (traceId == null) {
             traceIdHolder.set(new TraceId());
         } else {
-            traceIdHolder.set(traceId.createNextId());
+            traceIdHolder.set(traceId.createNextTraceId());
         }
     }
 
@@ -61,7 +61,7 @@ public class ThreadLocalLogTrace implements LogTrace {
         if (traceId.isFirstLevel()) {
             traceIdHolder.remove(); // destroy
         } else {
-            traceIdHolder.set(traceId.createPreviousId());
+            traceIdHolder.set(traceId.createPreviousTraceId());
         }
     }
 

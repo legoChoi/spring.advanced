@@ -1,6 +1,6 @@
 package hello.advanced.trace.logtrace;
 
-import hello.advanced.trace.TraceStatus;
+import hello.advanced.trace.model.TraceStatus;
 
 public interface LogTrace {
 

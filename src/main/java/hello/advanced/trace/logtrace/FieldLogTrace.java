@@ -1,7 +1,7 @@
 package hello.advanced.trace.logtrace;
 
-import hello.advanced.trace.TraceId;
-import hello.advanced.trace.TraceStatus;
+import hello.advanced.trace.model.TraceId;
+import hello.advanced.trace.model.TraceStatus;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -27,7 +27,7 @@ public class FieldLogTrace implements LogTrace {
         if (traceIdHolder == null) {
             traceIdHolder = new TraceId();
         } else {
-            traceIdHolder = traceIdHolder.createNextId();
+            traceIdHolder = traceIdHolder.createNextTraceId();
         }
     }
 
@@ -59,7 +59,7 @@ public class FieldLogTrace implements LogTrace {
         if (traceIdHolder.isFirstLevel()) {
             traceIdHolder = null; // destroy
         } else {
-            traceIdHolder = traceIdHolder.createPreviousId();
+            traceIdHolder = traceIdHolder.createPreviousTraceId();
         }
     }
 

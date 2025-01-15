@@ -1,7 +1,7 @@
 package hello.advanced.trace.hellotrace;
 
-import hello.advanced.trace.TraceId;
-import hello.advanced.trace.TraceStatus;
+import hello.advanced.trace.model.TraceId;
+import hello.advanced.trace.model.TraceStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +22,7 @@ public class HelloTraceV2 {
 
     // V2에서 추가
     public TraceStatus beginSync(TraceId beforeTraceId, String message) {
-        TraceId nextId = beforeTraceId.createNextId();
+        TraceId nextId = beforeTraceId.createNextTraceId();
         Long startTimeMs = System.currentTimeMillis();
 
         log.info("[{}] {}{}", nextId.getId(), addSpace(START_PREFIX, nextId.getLevel()), message);
